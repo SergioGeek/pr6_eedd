@@ -30,9 +30,7 @@ public:
 
     //Operaciones
     Palabra busca ( const std::string &termino );
-    void insertar ( std::string &termino );
-    void entrena ( const std::string& frase );
-    void usacorpus ( const std::string& nom_fich_corpus );
+    void entrena ( std::string& palabra1, std::string& palabra2 );
     std::list < std::string > sacaSucesoresDe ( const std::string& p );
 
     //Destructor
