@@ -3,6 +3,9 @@
 #include <sstream>
 #include "Diccionario.h"
 
+
+Diccionario::Diccionario() : hojas() {}
+
 Diccionario::Diccionario( std::string ruta ) {
 
 

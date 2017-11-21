@@ -5,6 +5,8 @@
 #include <string>
 #include "TextoPredictivo.h"
 
+class TextoPredictivo;
+
 class Usuario {
 
 private:
@@ -13,11 +15,15 @@ private:
     std::string nombre;
 
     TextoPredictivo* tp;
-    Diccionario dic;
+    Diccionario miDic;
 
 public:
 
-    Usuario ( std::string id, std::string nombrem, TextoPredictivo* tp );
+    Usuario ();
+    Usuario ( std::string i, std::string n, TextoPredictivo* t );
+
+    std::list < std::string > sugerencia ( const std::string& termino );
+    void escribeFrase ( const std::string& frase );
 
 };
 

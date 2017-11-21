@@ -4,21 +4,28 @@
 
 
 #include "Diccionario.h"
+#include "Usuario.h"
 #include <list>
+
+class Usuario;
 
 class TextoPredictivo {
 
 private:
 
-    Diccionario dic;
+    Diccionario dicBase;
+
+    std::map < std::string, Usuario > usuarios;
 
 public:
 
-    TextoPredictivo( Diccionario diccIdioma );
+    TextoPredictivo( Diccionario dic );
     TextoPredictivo(  TextoPredictivo& orig);
 
     std::list<std::string> sugerencia(std::string &termino);
-    void entrena ( std::string& frase );
+    bool entrena ( std::string& termino1, std::string& termino2 );
+
+    void nuevoUsuario ( std::string id, std::string nombre );
 
     virtual ~TextoPredictivo();
 

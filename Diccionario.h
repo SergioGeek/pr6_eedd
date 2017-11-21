@@ -24,6 +24,7 @@ private:
 public:
 
     //Constructores
+    Diccionario ();
     Diccionario ( std::string ruta );
     Diccionario ( const Diccionario& orig );
 
