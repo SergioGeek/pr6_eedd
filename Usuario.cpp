@@ -9,7 +9,7 @@ Usuario::Usuario(std::string i, std::string n, TextoPredictivo* t) : id ( i ), n
 
 std::list < std::string > Usuario::sugerencia ( const std::string& termino ) {
 
-    return this->miDic.busca ( termino ).sucesores();
+    return this->miDic.busca ( termino )->sucesores();
 }
 
 void Usuario::escribeFrase ( const std::string &frase ) {

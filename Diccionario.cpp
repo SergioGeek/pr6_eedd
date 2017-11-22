@@ -44,24 +44,22 @@ Diccionario::Diccionario(const Diccionario &orig) : hojas ( orig.hojas ) {}
 
 
 //BUSCA
-Palabra Diccionario::busca ( const std::string &termino ) {
+Palabra* Diccionario::busca ( const std::string &termino ) {
 
     std::map < std::string, Palabra >::iterator itt = this->hojas.find( termino );
 
     if ( itt == this->hojas.end() )
-        return Palabra ("");
-        //throw std::string ( "La palabra buscada no se enuentra en el diccionario");
+        return 0;
 
-    return itt->second;
+    return &itt->second;
 }
 
 
 void Diccionario::entrena (  std::string& palabra1, std::string& palabra2 ) {
 
-    Palabra p1 = this->busca(palabra1);
-    Palabra p2 = this->busca(palabra2);
+    Palabra* p1 = this->inserta ( palabra1 );
 
-    p1.nuevoSucesor(p2.getPalabra());
+   p1->nuevoSucesor( palabra2 );
 }
 
 
@@ -75,5 +73,14 @@ std::list < std::string > Diccionario::sacaSucesoresDe(const std::string &p) {
     return itt->second.sucesores();
 }
 
+Palabra* Diccionario::inserta ( const std::string& palabra ) {
+
+    Palabra p ( palabra );
+
+    auto itt = this->hojas.insert( std::pair < std::string, Palabra > ( palabra, p ) );
+
+
+    return &itt.first->second;
+}
 
 Diccionario::~Diccionario() {}

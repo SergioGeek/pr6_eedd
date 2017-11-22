@@ -29,9 +29,10 @@ public:
     Diccionario ( const Diccionario& orig );
 
     //Operaciones
-    Palabra busca ( const std::string &termino );
+    Palabra* busca ( const std::string &termino );
     void entrena ( std::string& palabra1, std::string& palabra2 );
     std::list < std::string > sacaSucesoresDe ( const std::string& p );
+    Palabra* inserta ( const std::string& palabra );
 
     //Destructor
     virtual ~Diccionario();
