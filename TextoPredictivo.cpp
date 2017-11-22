@@ -14,7 +14,7 @@ std::list<std::string> TextoPredictivo::sugerencia(std::string &termino) {
 }
 
 bool TextoPredictivo::entrena( std::string& termino1, std::string& termino2 ){
-    
+
     this->dicBase.entrena( frase );
 }
 
