@@ -15,7 +15,19 @@ std::list<std::string> TextoPredictivo::sugerencia(std::string &termino) {
 
 bool TextoPredictivo::entrena( std::string& termino1, std::string& termino2 ){
 
-    this->dicBase.entrena( frase );
+
+    Palabra p1 = this->dicBase.busca( termino1 );
+    if ( p1.getPalabra() != "" ){
+        
+        Palabra p2 = this->dicBase.busca( termino2 );
+        
+        if ( p2.getPalabra() != "" ) {
+            this->dicBase.entrena( termino1, termino2 );
+            return true;
+        }
+    }
+    
+    return false;
 }
 
 
@@ -24,6 +36,15 @@ void TextoPredictivo::nuevoUsuario ( std::string id, std::string nombre ) {
     Usuario u ( id, nombre, this );
 
     this->usuarios [ id ] = u;
+}
+
+Usuario TextoPredictivo::getUsuario( std::string id ) {
+
+    std::map < std::string, Usuario >::iterator itt = this->usuarios.find( id );
+
+    if ( itt != this->usuarios.end() )
+        return itt->second;
+    return Usuario();
 }
 
 TextoPredictivo::~TextoPredictivo() {

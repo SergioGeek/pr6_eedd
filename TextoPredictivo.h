@@ -26,6 +26,7 @@ public:
     bool entrena ( std::string& termino1, std::string& termino2 );
 
     void nuevoUsuario ( std::string id, std::string nombre );
+    Usuario getUsuario ( std::string id );
 
     virtual ~TextoPredictivo();
 
